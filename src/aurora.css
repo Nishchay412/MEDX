@@ -1,0 +1,65 @@
+/* Aurora Effect */
+.aurora-effect {
+  background: linear-gradient(120deg, #32a852, #a3e635, #059669);
+  background-size: 300% 300%; /* Keeps the gradient large for smoother transitions */
+  animation: aurora-animation 12s ease-in-out infinite; /* Slowed down the animation */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent; /* Transparent to show the gradient */
+  -webkit-text-fill-color: transparent; /* Keeps the gradient visible */
+}
+
+@keyframes aurora-animation {
+  0% { background-position: 100% 50%; }  /* Start from the right */
+  50% { background-position: 0% 50%; }   /* Move to the left */
+  100% { background-position: 100% 50%; } /* Go back to the right */
+}
+
+/* Glow Effect */
+.glow-effect {
+  position: relative;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #148a3f, #1f974b, #4ade80);
+  background-size: 200% 200%;
+  animation: glow-bg 4s linear infinite;
+  overflow: hidden;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.glow-effect::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 2px;
+  background: linear-gradient(90deg, #32a852, #16a34a, #4ade80);
+  background-size: 300% 300%;
+  animation: border-glow 8s linear infinite;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+@keyframes glow-bg {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes border-glow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Body Reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden; /* Removes horizontal scroll */
+  background-color: black; /* Optional: makes background black */
+}
