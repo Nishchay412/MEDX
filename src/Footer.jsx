@@ -28,7 +28,7 @@ export function Footer() {
       {/* Social Media Icons */}
       <div className="flex justify-center gap-6 mt-8">
         <a
-          href="https://youtube.com"
+          href="https://www.youtube.com/channel/UCzb2ieKMu0WDNKWBsUB7qaw"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-400 hover:text-green-500 transition duration-300 text-2xl"
@@ -36,7 +36,7 @@ export function Footer() {
           <FaYoutube />
         </a>
         <a
-          href="https://linkedin.com"
+          href="https://www.linkedin.com/company/99226187"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-400 hover:text-green-500 transition duration-300 text-2xl"
@@ -44,7 +44,7 @@ export function Footer() {
           <FaLinkedinIn />
         </a>
         <a
-          href="https://instagram.com"
+          href="https://www.instagram.com/med.x.ai"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-400 hover:text-green-500 transition duration-300 text-2xl"
