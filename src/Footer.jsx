@@ -1,4 +1,5 @@
 import React from "react";
+import { FaYoutube, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 
 export function Footer() {
   return (
@@ -13,10 +14,43 @@ export function Footer() {
           </button>
         </div>
         <div className="flex flex-col gap-2">
-          <a href="#home" className="hover:text-green-500 transition duration-300">HOME</a>
-          <a href="#projects" className="hover:text-green-500 transition duration-300">PROJECTS</a>
-          <a href="#blogs" className="hover:text-green-500 transition duration-300">BLOGS</a>
+          <a href="#home" className="hover:text-green-500 transition duration-300">
+            HOME
+          </a>
+          <a href="#projects" className="hover:text-green-500 transition duration-300">
+            PROJECTS
+          </a>
+          <a href="#blogs" className="hover:text-green-500 transition duration-300">
+            BLOGS
+          </a>
         </div>
+      </div>
+      {/* Social Media Icons */}
+      <div className="flex justify-center gap-6 mt-8">
+        <a
+          href="https://youtube.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-green-500 transition duration-300 text-2xl"
+        >
+          <FaYoutube />
+        </a>
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-green-500 transition duration-300 text-2xl"
+        >
+          <FaLinkedinIn />
+        </a>
+        <a
+          href="https://instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-green-500 transition duration-300 text-2xl"
+        >
+          <FaInstagram />
+        </a>
       </div>
       <div className="mt-8 text-center text-sm text-gray-400">
         © 2024 MedXAI. All rights reserved.
