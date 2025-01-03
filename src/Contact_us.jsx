@@ -1,102 +1,111 @@
-import React from "react";
-import { Header } from "./Header";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-
-// Define Zod schema for form validation
-const formSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email("Invalid email address"),
-  message: z.string().min(1, "Message is required"),
-});
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 export function Contact() {
-  // Initialize react-hook-form with Zod schema
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(formSchema),
+  const form = useRef();
+  const [formData, setFormData] = useState({
+    user_name: '',
+    user_email: '',
+    message: '',
   });
 
-  const ContactForm = () => {
-    const [formData, setFormData] = useState({
-      name: name,
-      email: email,
-      message: message;
-    });
-
-
-    const [name,setName] =useState("");
-    const [email,setEmail] =useState("");
-    const [message,setMessage] =useState("");
- 
-
-
-
-
-  const onSubmit = (data) => {
-    console.log("Form submitted:", data);
-    // handle form submission, such as sending data to an API
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+    .sendForm(
+      'service_nwtflti', // Replace with your EmailJS Service ID
+      'template_laxzme7', // Replace with your EmailJS Template ID
+      form.current,
+      'ew1oNlrRO99KMy-WC' // Replace with your EmailJS Public Key
+    )
+    .then(
+      (result) => {
+        console.log('Email sent successfully!', result.text);
+        alert('Email sent successfully! You will receive an acknowledgment shortly.');
+        setFormData({ user_name: '', user_email: '', message: '' }); // Reset form
+      },
+      (error) => {
+        console.error('Failed to send email:', error.text);
+        alert('Failed to send email. Please try again later.');
+      }
+    );
+    }  
+
   return (
-    <div>
-      <Header />
-      <div className="flex flex-col items-center justify-center mt-8 py-10">
-        <h1 className="text-green-800 text-5xl">Contact Us</h1>
-        <h2 className="text-green-600 text-3xl mt-4">
-          Any questions or remarks? Just write us a message!
-        </h2>
-        <div className="flex flex-col md:flex-row rounded-2xl justify-between gap-8 bg-gray-600 p-8 shadow-lg mt-6">
-          <div className="flex flex-col gap-4 ">
-            <h1 className="text-3xl font-bold text-gray-800">Contact Info</h1>
-            <p className="text-lg text-gray-500">
-              Say something to start a live chat
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-              <div>
-                <label className="block text-gray-700 font-medium">Name</label>
-                <input 
-                  {...register("name")} 
-                  placeholder="Enter your name" 
-                  className="mt-1 w-full border border-gray-300 p-2 rounded-lg" 
-                />
-                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
-              </div>
-              <div>
-                <label className="block text-gray-700 font-medium">Email</label>
-                <input 
-                  {...register("email")} 
-                  type="email" 
-                  placeholder="Enter your email" 
-                  className="mt-1 w-full border border-gray-300 p-2 rounded-lg" 
-                />
-                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
-              </div>
-              <div>
-                <label className="block text-gray-700 font-medium">Message</label>
-                <textarea 
-                  {...register("message")} 
-                  placeholder="Enter your message" 
-                  className="mt-1 w-full border border-gray-300 p-2 rounded-lg" 
-                />
-                {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
-              </div>
-              <button 
-                type="submit" 
-                className="mt-4 bg-green-600 text-white font-semibold py-2 rounded-lg w-full transform transition duration-200 hover:scale-105"
-              >
-                Submit
-              </button>
-            </form>
-          </div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[url('/background.jpg')] bg-cover bg-center bg-no-repeat p-4">
+      <h1 className="text-3xl font-bold text-white mb-6">Contact Us</h1>
+      <form
+        ref={form}
+        onSubmit={sendEmail}
+        className="w-full max-w-md bg-white rounded-lg shadow-lg p-6 space-y-4 bg-opacity-90 backdrop-blur-sm"
+      >
+        <div>
+          <label
+            htmlFor="user_name"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Name:
+          </label>
+          <input
+            type="text"
+            id="user_name"
+            name="user_name"
+            value={formData.user_name}
+            onChange={handleChange}
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Your Name"
+            required
+          />
         </div>
-      </div>
+        <div>
+          <label
+            htmlFor="user_email"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Email:
+          </label>
+          <input
+            type="email"
+            id="user_email"
+            name="user_email"
+            value={formData.user_email}
+            onChange={handleChange}
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Your Email"
+            required
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="message"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Message:
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            rows="4"
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Your Message"
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-md"
+        >
+          Send
+        </button>
+      </form>
     </div>
   );
 }

@@ -1,71 +1,66 @@
 import React from "react";
 import "./gradient.css";
 import { motion } from "framer-motion";
+import Spline from "@splinetool/react-spline";
+import { useNavigate } from 'react-router-dom';
 
 export function Hero() {
   const leftAnimation = {
     hidden: { opacity: 0, x: -200 },
-    visible: { opacity: 1, x: 0 }
+    visible: { opacity: 1, x: 0 },
   };
 
   const rightAnimation = {
     hidden: { opacity: 0, x: 200 },
-    visible: { opacity: 1, x: 0 }
+    visible: { opacity: 1, x: 0 },
   };
 
   const transitionConfig = { duration: 1, ease: "easeOut" };
+
   return (
-    
-    <section className="flex flex-col items-center justify-center mt-20 px-6 md:px-16 lg:px-32 text-center w-screen py-16">
-      <motion.div 
-        className="max-w-4xl"
-        initial={{ opacity: 0, y: 200 }} // Starts off-screen below
-        animate={{ opacity: 1, y: 0 }}   // Moves to the center
-        transition={{ duration: 1.2, ease: "easeOut" }}  // Smooth transition
-      >
-        <h1 className="gradient-text text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-          Transforming Healthcare through AI Innovation
-        </h1>
-        <p className="text-lg md:text-xl font-medium text-gray-300 mb-8">
-          A global collective of students and professionals advancing healthcare 
-          with the power of Artificial Intelligence.
-        </p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <button className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-400 transition duration-300">
-            Join Us
-          </button>
-          <button className="border-2 border-green-500 text-green-500 px-6 py-3 rounded-lg hover:bg-green-50 transition duration-300">
-            Learn More
-          </button>
-        </div>
-      </motion.div>
+    <section className="relative  bg-black w-full min-h-screen overflow-hidden flex flex-col items-center justify-center px-6">
+      {/* Background Spline */}
+      
 
-      <div className="flex justify-between items-center mt-16 gap-4">
-        <motion.div
-          style={{ width: '250px', height: 'auto' }}
-          initial="hidden"
-          animate="visible"
-          variants={leftAnimation}
-          transition={transitionConfig}
-        >
-          <img src="/medx1.jpg" alt="Medx Image" className="rounded-lg shadow-lg" />
-        </motion.div>
-        <motion.p
-          className="text-lg md:text-md font-semibold text-gray-300 mt-4 max-w-xl text-left"
-          initial="hidden"
-          animate="visible"
-          variants={rightAnimation}
-          transition={transitionConfig}
-        >
-          MedXAI began in 2023 with a focused effort to conduct thorough literature reviews 
-          across various medical disciplines, including cardiology, neuroscience, surgery, 
-          and prosthetics. These insights were shared to educate and increase AI literacy 
-          among our growing community.
-        </motion.p>
-      </div>
+      {/* Foreground Content */}
+      <motion.div
+  className="relative max-w-4xl bg-opacity-70 bg-black p-8 rounded-xl shadow-lg  h-screen text-white z-10 overflow-hidden"
+  initial={{ opacity: 0, y: 200 }} // Starts off-screen below
+  animate={{ opacity: 1, y: 0 }} // Moves to the center
+  transition={{ duration: 1.2, ease: "easeOut" }} // Smooth transition
+>
+  {/* Spline Background */}
+  <div className="absolute inset-0 -z-10">
+    <video src ="/Brain (2).mp4"
+    className="video-background"
+    autoPlay
+    loop
+    muted>
 
-      {/* Section 2 */}
-      <div className="flex justify-between items-center mt-16 gap-4">
+    </video>
+  </div>
+
+  {/* Foreground Content */}
+  <div className="flex flex-col items-center justify-cente py-4 mt-8 py-12">
+  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-center bg-gradient-to-r from-cyan-500 to-green-500 bg-clip-text text-transparent">
+  Transforming Healthcare through AI Innovation
+</h1>
+
+<p className="text-lg md:text-xl lg:text-2xl text-center text-gray-300 font-light">
+  A global collective of students and professionals advancing healthcare with the power of Artificial Intelligence.
+</p>
+
+  </div>
+ 
+
+
+</motion.div>
+
+
+     
+      
+      
+<div className="flex justify-between items-center mt-16 gap-4">
         <motion.p
           className="text-lg md:text-md font-semibold text-gray-300 mt-4 max-w-xl text-left"
           initial="hidden"
