@@ -14,9 +14,9 @@ export function Header() {
       <nav className="flex gap-6 md:gap-8 lg:gap-12">
         <div
           className="aurora-effect text-white text-lg md:text-xl hover:text-green-500 transition duration-300 cursor-pointer"
-          onClick={() => navigate("/About")}
+          onClick={() => navigate("/blogs")}
         >
-          ABOUT
+          
         </div>
         <div
           className="aurora-effect text-white text-lg md:text-xl hover:text-green-500 transition duration-300 cursor-pointer"
@@ -26,9 +26,9 @@ export function Header() {
         </div>
         <div
           className="aurora-effect text-white text-lg md:text-xl hover:text-green-500 transition duration-300 cursor-pointer"
-          onClick={() => navigate("/Blogs")}
+          onClick={() => navigate("/socials")}
         >
-          BLOGS
+          SOCIALS
         </div>
         <div
           className="aurora-effect text-white text-lg md:text-xl hover:text-green-500 transition duration-300 cursor-pointer"

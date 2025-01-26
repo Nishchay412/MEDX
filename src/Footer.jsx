@@ -18,6 +18,14 @@ export function Footer() {
           <a href="#blogs" className="hover:text-green-500 transition duration-300">BLOGS</a>
         </div>
       </div>
+      <div className="flex justify-center">
+        <img src ="/instagram1.png" className="cursor-pointer"> 
+
+        </img>
+        <img src ="/linkedin1.png" className="cursor-pointer"> 
+        
+        </img>
+      </div>
       <div className="mt-8 text-center text-sm text-gray-400">
         © 2024 MedXAI. All rights reserved.
       </div>

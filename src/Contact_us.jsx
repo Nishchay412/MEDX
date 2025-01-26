@@ -18,28 +18,28 @@ export function Contact() {
     e.preventDefault();
 
     emailjs
-    .sendForm(
-      'service_nwtflti', // Replace with your EmailJS Service ID
-      'template_laxzme7', // Replace with your EmailJS Template ID
-      form.current,
-      'ew1oNlrRO99KMy-WC' // Replace with your EmailJS Public Key
-    )
-    .then(
-      (result) => {
-        console.log('Email sent successfully!', result.text);
-        alert('Email sent successfully! You will receive an acknowledgment shortly.');
-        setFormData({ user_name: '', user_email: '', message: '' }); // Reset form
-      },
-      (error) => {
-        console.error('Failed to send email:', error.text);
-        alert('Failed to send email. Please try again later.');
-      }
-    );
-    }  
+      .sendForm(
+        'service_nwtflti', // Replace with your EmailJS Service ID
+        'template_laxzme7', // Replace with your EmailJS Template ID
+        form.current,
+        'ew1oNlrRO99KMy-WC' // Replace with your EmailJS Public Key
+      )
+      .then(
+        (result) => {
+          console.log('Email sent successfully!', result.text);
+          alert('Email sent successfully! You will receive an acknowledgment shortly.');
+          setFormData({ user_name: '', user_email: '', message: '' }); // Reset form
+        },
+        (error) => {
+          console.error('Failed to send email:', error.text);
+          alert('Failed to send email. Please try again later.');
+        }
+      );
+  };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[url('/background.jpg')] bg-cover bg-center bg-no-repeat p-4">
-      <h1 className="text-3xl font-bold text-white mb-6">Contact Us</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-green-700 via-green-500 to-green-300 p-4">
+      <h1 className="text-4xl font-bold text-white mb-8">Contact Us</h1>
       <form
         ref={form}
         onSubmit={sendEmail}

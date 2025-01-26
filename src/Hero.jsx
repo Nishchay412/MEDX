@@ -84,7 +84,7 @@ export function Hero() {
       </div>
 
       {/* Section 3 */}
-      <div className="flex justify-between items-center mt-16 gap-4">
+      <div className="flex justify-between items-center mt-16 gap-4 mb-10">
         <motion.div
           style={{ width: '250px', height: 'auto' }}
           initial="hidden"
