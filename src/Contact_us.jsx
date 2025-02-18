@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-
+import { Header } from './Header';
 export function Contact() {
   const form = useRef();
   const [formData, setFormData] = useState({
@@ -38,18 +38,21 @@ export function Contact() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-green-700 via-green-500 to-green-300 p-4">
-      <h1 className="text-4xl font-bold text-white mb-8">Contact Us</h1>
+    <div>
+ <Header/>
+    
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950 p-4">
+     
+      <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-cyan-500 to-green-500 bg-clip-text text-transparent">
+        Contact Us
+      </h1>
       <form
         ref={form}
         onSubmit={sendEmail}
-        className="w-full max-w-md bg-white rounded-lg shadow-lg p-6 space-y-4 bg-opacity-90 backdrop-blur-sm"
+        className="w-full max-w-md bg-gray-900 bg-opacity-80 rounded-lg shadow-lg p-6 space-y-4 backdrop-blur-lg"
       >
         <div>
-          <label
-            htmlFor="user_name"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="user_name" className="block text-sm font-medium text-gray-300">
             Name:
           </label>
           <input
@@ -58,16 +61,13 @@ export function Contact() {
             name="user_name"
             value={formData.user_name}
             onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm bg-gray-800 text-white focus:ring-green-500 focus:border-green-500"
             placeholder="Your Name"
             required
           />
         </div>
         <div>
-          <label
-            htmlFor="user_email"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="user_email" className="block text-sm font-medium text-gray-300">
             Email:
           </label>
           <input
@@ -76,16 +76,13 @@ export function Contact() {
             name="user_email"
             value={formData.user_email}
             onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm bg-gray-800 text-white focus:ring-green-500 focus:border-green-500"
             placeholder="Your Email"
             required
           />
         </div>
         <div>
-          <label
-            htmlFor="message"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="message" className="block text-sm font-medium text-gray-300">
             Message:
           </label>
           <textarea
@@ -94,18 +91,19 @@ export function Contact() {
             value={formData.message}
             onChange={handleChange}
             rows="4"
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm bg-gray-800 text-white focus:ring-green-500 focus:border-green-500"
             placeholder="Your Message"
             required
           />
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-md"
+          className="w-full py-2 px-4 font-bold text-lg border-2 border-green-500 bg-transparent hover:bg-green-500 hover:text-black transition duration-300 rounded-md shadow-md"
         >
           Send
         </button>
       </form>
+    </div>
     </div>
   );
 }
